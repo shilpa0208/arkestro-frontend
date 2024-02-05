@@ -148,15 +148,14 @@ const Subtasks: React.FC = () => {
   ]);
 
   const handleSaveInfo = async ({ table, values }: { table: any, values: any }) => {
-
     const body = {
       id: values.projectId,
       name: values.projectName,
-      description: values.description,
+      description: values.projectDescription,
       tasks_attributes: {
         id: values.taskId,
         name: values.taskName,
-        description: values.description,
+        description: values.taskDescription,
         subtasks_attributes: {
           id: values.subtaskId,
           name: values.subtaskName,
@@ -167,13 +166,20 @@ const Subtasks: React.FC = () => {
     }
 
     try {
-      await fetch(`http://localhost:3001/projects/${values.projectId}`, {
-        method: 'PUT',
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(body)
-      });
+      await axios.put(`http://localhost:3001/projects/${values.projectId}`,
+        body,
+        {
+          withCredentials: true
+        }
+      );
+      fetchData();
+      // await fetch(`http://localhost:3001/projects/${values.projectId}`, {
+      //   method: 'PUT',
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //   },
+      //   body: JSON.stringify(body)
+      // });
 
     } catch (error) {
       console.error('Error during login:', error);
