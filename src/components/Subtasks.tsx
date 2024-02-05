@@ -7,7 +7,7 @@ import {
   type MRT_PaginationState,
   type MRT_SortingState,
 } from 'material-react-table';
-import { StyledHeader, StyledTable } from '../styles/ProjectsStyles';
+import { StyledHeader, StyledTable } from '../styles/SubtasksStyles';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
