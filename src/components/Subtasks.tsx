@@ -64,7 +64,6 @@ const createRowData = (response: SubtasksApiResponse) => {
   const projectById: Map<String, Project> = new Map(response.data.projects.map(project => [project.id, project]))
   response.data.subtasks.forEach(
     (subtask) => {
-      // TODO handle cases where taskId is not in tasks list & task.projectId is not in projects list
       const task = taskById.get(subtask.taskId)!
       const project = projectById.get(task?.projectId)!
       res.push({
@@ -173,14 +172,6 @@ const Subtasks: React.FC = () => {
         }
       );
       fetchData();
-      // await fetch(`http://localhost:3001/projects/${values.projectId}`, {
-      //   method: 'PUT',
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //   },
-      //   body: JSON.stringify(body)
-      // });
-
     } catch (error) {
       console.error('Error during login:', error);
     }

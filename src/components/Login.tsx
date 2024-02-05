@@ -43,19 +43,29 @@ const Login: React.FC = () => {
     <LoginContainer>
       <LoginForm onSubmit={handleLogin}>
         <StyledHeader>Login</StyledHeader>
-        <label>Email:</label>
-        <StyledInput>
-          <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-        </StyledInput>
+        <label id='email'>Email:
+          <StyledInput>
+            <input
+              id='email'
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)} />
+          </StyledInput>
+        </label>
 
-        <label>Password:</label>
-        <StyledInput>
-          <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
-        </StyledInput>
+        <label id='password'>Password:
+          <StyledInput>
+            <input
+              id='password'
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)} />
+          </StyledInput>
+        </label>
 
         <StyledButton type="submit" disabled={!email || !password}>Login</StyledButton>
         <Spacer />
-        <StyledButton type="submit" onClick={() => navigate('/signup')}>Sign up</StyledButton>
+        <StyledButton type="button" onClick={() => navigate('/signup')}>Sign up</StyledButton>
         {error && <StyledError>{error}</StyledError>}
       </LoginForm>
     </LoginContainer>

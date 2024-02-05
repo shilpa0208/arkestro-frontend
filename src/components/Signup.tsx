@@ -53,28 +53,41 @@ const Signup: React.FC = () => {
         <LoginContainer>
             <LoginForm onSubmit={handleSignup}>
                 <StyledHeader>Signup</StyledHeader>
-                <label>Email:</label>
-                <StyledInput>
-                    <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                </StyledInput>
+                <label>Email:
+                    <StyledInput>
+                        <input
+                            id='email'
+                            type="email"
+                            value={email}
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                    </StyledInput>
+                </label>
 
-                <label>Password:</label>
-                <StyledInput>
-                    <input type="password" value={password1} onChange={(e) => setPassword1(e.target.value)} />
-                </StyledInput>
+                <label>Password:
+                    <StyledInput>
+                        <input
+                            id='password1'
+                            type="password"
+                            value={password1}
+                            onChange={(e) => setPassword1(e.target.value)} />
+                    </StyledInput>
+                </label>
 
-                <label>Re-enter Password:</label>
-                <StyledInput>
-                    <input
-                        type="password"
-                        value={password2}
-                        onChange={handlePassword2Change} />
-                    {passwordMismatch && <StyledError>Passwords do not match</StyledError>}
-                </StyledInput>
+                <label>Re-enter Password:
+                    <StyledInput>
+                        <input
+                            id='password2'
+                            type="password"
+                            value={password2}
+                            onChange={handlePassword2Change} />
+                        {passwordMismatch && <StyledError>Passwords do not match</StyledError>}
+                    </StyledInput>
+                </label>
 
                 <StyledButton type="submit" disabled={!email || !password1 || !password2}>Sign up</StyledButton>
                 <Spacer />
-                <StyledButton type="submit" onClick={() => navigate('/')}>Login</StyledButton>
+                <StyledButton type="button" onClick={() => navigate('/')}>Login</StyledButton>
             </LoginForm>
         </LoginContainer>
     );
